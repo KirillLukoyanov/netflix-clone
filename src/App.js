@@ -1,5 +1,7 @@
+import JumbotronContainer from "./containers/jumbotron";
+
 function App() {
-  return <p>Netflix, kirill branch</p>;
+  return <JumbotronContainer />;
 }
 
 export default App;
