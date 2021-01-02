@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   display: flex;
   border-bottom: 8px solid #222;
+  width: 100%;
 `;
 
 export const Frame = styled.div`
@@ -74,6 +75,7 @@ export const Item = styled.div`
   color: white;
   margin-bottom: 10px;
   max-width: 670px;
+  margin: auto;
 
   &:first-of-type {
     margin-top: 3em;
