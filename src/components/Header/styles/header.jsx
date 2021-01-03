@@ -49,7 +49,7 @@ export const Background = styled.div`
 
   @media (max-width: 1100px) {
     ${({ dontShowOnSmallViewPort }) =>
-      dontShowOnSmallViewPort && "background: none;"}
+      dontShowOnSmallViewPort ? "background-image: none;" : ""};
   }
 `;
 
@@ -71,7 +71,7 @@ export const Feature = styled(Container)`
   width: 50%;
 
   @media (max-width: 1100px) {
-    dis play: none;
+    display: none;
   }
 `;
 
@@ -115,7 +115,7 @@ export const Link = styled.p`
   color: #fff;
   text-decoration: none;
   margin-right: 30px;
-  font-weight: ${({ active }) => (active === "true" ? "700" : "normal")};
+  font-weight: ${({ active }) => (active ? "700" : "normal")};
   cursor: pointer;
   font-size: 20px;
 
@@ -143,9 +143,29 @@ export const Dropdown = styled.div`
   position: absolute;
   padding: 10px;
 
-  width: 100px;
+  width: 200px;
   top: 32px;
   right: 10px;
+
+  ${Group}:last-of-type ${Link} {
+    cursor: pointer;
+  }
+
+  ${Group} {
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    ${Link}, ${Picture} {
+      cursor: default;
+    }
+
+    button {
+      margin-right: 10px;
+    }
+  }
 `;
 
 export const Profile = styled.div`
@@ -163,5 +183,66 @@ export const Profile = styled.div`
   &:hover > ${Dropdown} {
     display: flex;
     flex-direction: column;
+  }
+`;
+
+export const Search = styled.div`
+  dipslay: flex;
+  align-items: center;
+
+  svg {
+    color: white;
+    cursor: pointer;
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+`;
+
+export const SearchInput = styled.input`
+  background-color: #44444459;
+  color: white;
+  border: 1px solid white;
+  transition: width 0.5s;
+  border-radius: 5px;
+  height: 30px;
+  outline: none;
+  margin-left: ${({ active }) => (active ? "10px" : "0")};
+  width: ${({ active }) => (active ? "200px" : "0")};
+  opacity: ${({ active }) => (active ? "1" : "0")};
+  padding: ${({ active }) => (active ? "0 10px" : "0")};
+`;
+
+export const SearchIcon = styled.button`
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+
+  img {
+    filter: brightness(0) invert(1);
+    width: 16px;
+    height: auto;
+  }
+`;
+
+export const PlayButton = styled.button`
+  box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
+  background-color: #ffffff;
+  color: #000;
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  max-width: 130px;
+  font-size: 20px;
+  margin-top: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: #ff1e1e;
+    color: #fff;
   }
 `;
