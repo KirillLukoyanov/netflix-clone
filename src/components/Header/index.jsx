@@ -7,11 +7,15 @@ import {
   ButtonLink,
   Frame,
   Feature,
+  SearchInput,
+  SearchIcon,
   Text,
   Group,
   Title,
   Link,
+  PlayButton,
   Profile,
+  Search,
   Dropdown,
   Picture,
 } from "./styles/header";
@@ -56,6 +60,28 @@ Header.Dropdown = function HeaderDropdown({ children, ...restProps }) {
   return <Dropdown {...restProps}>{children}</Dropdown>;
 };
 
+Header.Search = function HeaderDropdown({
+  searchTerm,
+  setSearchTerm,
+  ...restProps
+}) {
+  const [searchActive, setSearchActive] = React.useState(false);
+  return (
+    <Search {...restProps}>
+      <SearchIcon onClick={() => setSearchActive((prev) => !prev)}>
+        <img src="/images/icons/search.png" alt="search" />
+      </SearchIcon>
+
+      <SearchInput
+        placeholder="Search films and series"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        active={searchActive}
+      />
+    </Search>
+  );
+};
+
 Header.Logo = function HeaderLogo({ to, ...restProps }) {
   return (
     <ReactRouterLink to={to}>
@@ -70,6 +96,10 @@ Header.Button = function HeaderButton({ to, children, ...restProps }) {
       {children}
     </ButtonLink>
   );
+};
+
+Header.PlayButton = function HeaderPlayButton({ to, children, ...restProps }) {
+  return <PlayButton {...restProps}>{children}</PlayButton>;
 };
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {

@@ -5,6 +5,7 @@
   "dependencies": {
     "firebase": "^8.2.1",
     "flux.js": "^0.1.0",
+    "fuse.js": "^6.4.5",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -12,6 +13,30 @@
     "react-scripts": "4.0.1",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js",
+      "!<rootDir>/src/index.js",
+      "!<rootDir>/src/seed.js",
+      "!<rootDir>/src/global-styles.js",
+      "!<rootDir>/src/components/index.js",
+      "!<rootDir>/src/lib/firebase.prod.js",
+      "!<rootDir>/src/hooks/*.js",
+      "!<rootDir>/src/context/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": [
+      "html",
+      "text"
+    ]
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -21,7 +46,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
